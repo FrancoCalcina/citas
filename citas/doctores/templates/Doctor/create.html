@@ -1,0 +1,108 @@
+
+{% load i18n %}
+{% block breadcrumb %}
+  <li class="breadcrumb-item">
+    <a href="{% url 'Doctor:list' %}">Doctores</a>
+  </li>
+  <li class="breadcrumb-item active">Registrar</li>
+{% endblock %}
+{% block content %}
+  <div class="card">
+    <div class="card-header">
+      {% if not form.instance.pk %}{% trans 'Registrar' %}{% else %}{% trans 'Actualizar' %}{% endif %}
+    </div>
+    <form action="" role="form" class="form form-horizontal validate-form" method="post" autocomplete="off">
+      {% csrf_token %}
+      <div class="card-body">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+            <div class="form-group {% if form.first_name.errors %}has-error{% endif %}">
+              <label class="col-xl-5 col-lg-5 col-md-5 col-sm-5 control-label" >
+                {{ form.first_name.label }}
+              </label>
+              <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                <div class="form-inline">
+                  {{ form.first_name }}
+                  <i class="fas fa-asterisk item-required" aria-hidden="true"></i>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+            <div class="form-group {% if form.last_name.errors %}has-error{% endif %}">
+              <label class="col-xl-5 col-lg-5 col-md-5 col-sm-5 control-label" >
+                {{ form.last_name.label }}
+              </label>
+              <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                <div class="form-inline">
+                  {{ form.last_name }}
+                  <i class="fas fa-asterisk item-required" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+            <div class="form-group {% if form.phone.errors %}has-error{% endif %}">
+              <label class="col-xl-5 col-lg-5 col-md-5 col-sm-5 control-label" >
+                {{ form.phone.label }}
+              </label>
+              <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                <div class="form-inline">
+                  {{ form.phone }}
+                  <i class="fas fa-asterisk item-required" aria-hidden="true"></i>
+                </div>
+                <small class="form-text text-muted">
+                  {{ form.phone.help_text }}
+                </small>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+            <div class="form-group {% if form.email.errors %}has-error{% endif %}">
+              <label class="col-xl-5 col-lg-5 col-md-5 col-sm-5 control-label" >
+                {{ form.email.label }}
+              </label>
+              <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                <div class="form-inline">
+                  {{ form.email }}
+                  <i class="fa fa-asterisk item-required" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+            <div class="form-group {% if form.address.errors %}has-error{% endif %}">
+              <label class="col-xl-5 col-lg-5 col-md-5 col-sm-5 control-label" >
+                {{ form.address.label }}
+              </label>
+              <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                <div class="form-inline">
+                  {{ form.address }}
+                  <i class="fa fa-asterisk item-required" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer small text-right">
+        <button type="reset" class="btn btn-primary btn-sm" data-toggle="tooltip">{% trans 'Limpiar' %}</button>
+        <button type="submit" class="btn btn-primary btn-sm" data-toggle="tooltip">{% if not form.instance.pk %}{% trans 'Registrar' %}{% else %}{% trans 'Actualizar' %}{% endif %}</button>
+      </div>
+    </form>
+  </div>
+  <br>
+{% endblock %}
+
